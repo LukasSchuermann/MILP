@@ -460,11 +460,11 @@ SCIP_DECL_CONSENFOLP(ConshdlrRCFC::scip_enfolp)
     assert(SCIPgetLPSolstat(scip) == SCIP_LPSOLSTAT_OPTIMAL);
 
     /** Get all active LPI-columns */
-    SCIP_COL** lpicols = SCIPlukGetlpiCols(scip);
+    SCIP_COL** lpicols = SCIPGetlpiColsRCFC(scip);
     std::vector<int> checkLPIcols;
 
     /* collect candidates */
-    for(int i = 0; i < SCIPlukGetNlpiCols(scip); i++)
+    for(int i = 0; i < SCIPGetNlpiColsRCFC(scip); i++)
     {
         SCIP_Col* col = lpicols[i];
         if(!SCIPvarIsIntegral(SCIPcolGetVar(col)))
