@@ -8,9 +8,17 @@ The following steps need to be followed to use our code:
   1. Download the source code of the SCIP Optimization Suite from https://scipopt.org/index.php#download (we used version 9.1.1)
   2. In "scip/src/" we need to adapt "scip/lpi.h" and the corresponding LP-solver file ("lpi/lpi_spx2" in our case) accordingly:
      ```markdown
+     # Add this function to scip/lpi.h
      SCIP_EXPORT
-     SCIP_Real SCIPluklpiColGetNewLPval(
-     SCIP_LPI*           lpi,
-     int                 colIndex
+     SCIP_Real SCIPlpiColGetNewLPvalRCFC(
+        SCIP_LPI*           lpi,
+        int                 colIndex
      );
+     # Add this declaration to lpi/lpi_spx2
+     SCIP_Real SCIPlpiColGetNewLPvalRCFC(
+        SCIP_LPI*           lpi,
+        int                 colIndex
+     ){
+     return lpi->spx->getPrimalRealIndex(colIndex);
+     }
      ```
