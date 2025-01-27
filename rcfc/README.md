@@ -41,12 +41,12 @@ The following steps need to be followed to use our code:
      int SCIPGetNlpiColsRCFC(
         SCIP*           scip
      ){
-     return lukGetNlpiCols(scip->lp);
+        return getNlpiColsRCFC(scip->lp);
      }
      SCIP_COL** SCIPGetlpiColsRCFC(
         SCIP*           scip
      ){
-     return lukGetlpiCols(scip->lp);
+        return getlpiColsRCFC(scip->lp);
      }
      ```
   4. Additionally, in "scip/src/scip/" we need to append the following code to "lp.h" and "lp.c":
