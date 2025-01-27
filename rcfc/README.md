@@ -3,7 +3,7 @@
 This project contains the implementation of the RCFC methods for MILPs of my PhD thesis.
 It is implementend in C++ using the MINLP solver SCIP.
 
-# Usage
+## Requirements
 
 For an efficient implementation of the RCFC method, we want to stop the (primal) simplex algorithm as soon as the considered basic variable exceeds a value.
 As a workaround, we called the simplex algorithm with a limited number of iterations and checked in between each run.
@@ -107,6 +107,8 @@ The following steps need to be followed to use our code:
      }
      ```
   5. Now compile SCIP (see https://github.com/scipopt/scip/blob/master/INSTALL.md) and link the installation to this project by either setting the $ENV{SCIP_DIR} variable to the correct path or include -DSCIP_DIR="/path/to/scip/installation" in the compiling steps.
+
+### Usage
 
 The compilation of this project works as follows:
 ```markdown
