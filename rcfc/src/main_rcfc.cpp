@@ -25,7 +25,7 @@ SCIP_RETCODE readArguments(
         char**              argv,               /**< array with shell parameters */
         char**              input_file,
         char**              settings_file,
-        bool*               useCutting,
+        bool*               useRCFC,
         int*                seed,
         double*             optObj,
         bool*               usedOptObj,
@@ -65,9 +65,9 @@ SCIP_RETCODE readArguments(
     /* check for branching strategy */
     for (int i = 2; i < argc; i++)
     {
-        if ( ! strcmp(argv[i], "+useCutting"))
+        if ( ! strcmp(argv[i], "+useRCFC"))
         {
-            *useCutting = true;
+            *useRCFC = true;
         }else if(! strcmp(argv[i], "+objValue"))
         {
             if( i == argc - 1 || (! strncmp(argv[i+1], "+",1)))
@@ -372,6 +372,9 @@ SCIP_RETCODE runSCIPModel(
     }
     setUpScip(&scip, usedOptObj);
 
+    if(withRCFC){
+        std::cout << "Activated RCFC method on mode " << mode << std::endl;
+    }
     /* Seed */
     SCIPsetIntParam(scip, "randomization/randomseedshift", seed);
 
