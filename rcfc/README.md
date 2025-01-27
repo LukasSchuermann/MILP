@@ -6,15 +6,15 @@ For that, we need to add a function to SCIP that yields the primal solution of a
 
 The following steps need to be followed to use our code:
   1. Download the source code of the SCIP Optimization Suite from https://scipopt.org/index.php#download (we used version 9.1.1)
-  2. In "scip/src/" we need to adapt "scip/lpi.h" and the corresponding LP-solver file ("lpi/lpi_spx2" in our case) accordingly:
+  2. In "scip/src/lpi/" we need to adapt "lpi.h" and the corresponding LP-solver file ("lpi_spx2.cpp" in our case) accordingly:
      ```markdown
-     # Add this function to scip/lpi.h
+     # Add this function to lpi.h
      SCIP_EXPORT
      SCIP_Real SCIPlpiColGetNewLPvalRCFC(
         SCIP_LPI*           lpi,
         int                 colIndex
      );
-     # Add this declaration to lpi/lpi_spx2
+     # Add this declaration to lpi_spx2.cpp
      SCIP_Real SCIPlpiColGetNewLPvalRCFC(
         SCIP_LPI*           lpi,
         int                 colIndex
@@ -39,7 +39,7 @@ The following steps need to be followed to use our code:
         return so->getPrimalRealIndex(index);
      }
      ```
-  4. Lastly, we need to adapt the probing mode by changing file "scip/src/scip/lp.c":
+  4. Lastly, we need to adapt the probing mode by changing the file "scip/src/scip/lp.c":
      ```markdown
      # Exchange line 12444
      if( lp->flushed && lp->solved )
@@ -53,3 +53,4 @@ The following steps need to be followed to use our code:
      $ cmake .. -DSCIP_DIR="/path/to/scip/installation"
      $ make
      ```
+Now, we can execute our algorithm.
