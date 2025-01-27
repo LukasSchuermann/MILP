@@ -344,7 +344,6 @@ SCIP_RETCODE runSCIPModel(
 {
     SCIP* scip = nullptr;
 
-    assert(argc >= 5);
     int seed = 0;
     double optObj = 0;
     bool usedOptObj = false;
