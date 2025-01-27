@@ -37,7 +37,7 @@ target_include_directories(rcfc
 message(STATUS "Looking for SCIP.")
 if (NOT SCIP_DIR)
     message(STATUS "No SCIP specified, will look for environment variable.")
-    set(SCIP_DIR "$ENV{SCIP_DIR3}" CACHE PATH "Path to SCIP directory")
+    set(SCIP_DIR "$ENV{SCIP_DIR}" CACHE PATH "Path to SCIP directory")
 else ()
     message(STATUS "Will use SCIP_DIR ${SCIP_DIR}.")
 endif ()

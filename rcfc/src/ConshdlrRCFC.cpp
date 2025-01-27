@@ -59,7 +59,7 @@ SCIP_RETCODE probingNoMove(
         SCIPsolveProbingLP(scip, k, &lperror, &cutoff);
         nIters += k;
         k = MAX((int) (obj->iter_perc_ * nIters), 1);
-        local_lpVal = SCIPluklpiColGetNewLPval(lpi, index);
+        local_lpVal = SCIPlpiColGetNewLPvalRCFC(lpi, index);
         if(nIters > 500){
             break;
         }
@@ -168,7 +168,7 @@ SCIP_RETCODE RCFC_Extended(
 
         /* First iteration */
         SCIPsolveProbingLP(scip, k, &lperror, &cutoff);
-        local_lpVal = SCIPluklpiColGetNewLPval(lpi, index);
+        local_lpVal = SCIPlpiColGetNewLPvalRCFC(lpi, index);
         /* Abort Probing once x_i = 0 */
         while (SCIPisSumGT(scip, cutDir * (local_lpVal - bound), 0.0)) {
             /* calculate the gap corresponding to the original objective function */
@@ -190,7 +190,7 @@ SCIP_RETCODE RCFC_Extended(
             k = MAX((int) (obj->iter_perc_ * nLPIterations), obj->iter_init_);
             SCIPsolveProbingLP(scip, k, &lperror, &cutoff);
 
-            local_lpVal = SCIPluklpiColGetNewLPval(lpi, index);
+            local_lpVal = SCIPlpiColGetNewLPvalRCFC(lpi, index);
             /* safety measure */
             if(nLPIterations > 100000){
                 tooSteep = true;
@@ -200,7 +200,7 @@ SCIP_RETCODE RCFC_Extended(
         if(SCIPisSumLE(scip, cutDir * (local_lpVal - bound), 0) || tooSteep)
             break;
         assert(SCIPgetLPSolstat(scip) == SCIP_LPSOLSTAT_OPTIMAL);
-        assert(SCIPvarGetLPSol(var) == SCIPluklpiColGetNewLPval(lpi, index));
+        assert(SCIPvarGetLPSol(var) == SCIPlpiColGetNewLPvalRCFC(lpi, index));
 
         /* did not move after objective rotation -> can fix variable */
         if (SCIPisEQ(scip, local_lpVal, oldValue)){
