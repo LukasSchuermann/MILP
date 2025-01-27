@@ -39,7 +39,7 @@ The following steps need to be followed to use our code:
         return so->getPrimalRealIndex(index);
      }
      ```
-  4. Lastly, we need to adapt the probing mode by changing file "scip/src/scip/lp.c":
+  4. Lastly, we need to adapt the probing mode by changing the file "scip/src/scip/lp.c":
      ```markdown
      # Exchange line 12444
      if( lp->flushed && lp->solved )
@@ -53,3 +53,4 @@ The following steps need to be followed to use our code:
      $ cmake .. -DSCIP_DIR="/path/to/scip/installation"
      $ make
      ```
+Now, we can execute our algorithm.
