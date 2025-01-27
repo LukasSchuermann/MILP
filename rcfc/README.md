@@ -19,6 +19,23 @@ The following steps need to be followed to use our code:
         SCIP_LPI*           lpi,
         int                 colIndex
      ){
-     return lpi->spx->getPrimalRealIndex(colIndex);
+        return lpi->spx->getPrimalRealIndex(colIndex);
+     }
+     ```
+  3. In "soplex/src/soplex/" we need to add the following code to the corresponding files:
+     ```markdown
+     # Add this function to the SoPlexBase class in soplex.h (e.g. at line 664)
+     double getPrimalRealIndex(int index);
+     # Add the declaration to soplex.hpp
+     template <class R>
+     double SoPlexBase<R>::getPrimalRealIndex(int index){
+        return _solReal._primal[index];
+     }
+     # Add this function to soplex_interface.h
+     double SoPlex_getPrimalRealIndex(void* soplex, int index);
+     # Add the declaration to soplex_interface.cpp
+     double SoPlex_getPrimalRealIndex(void* soplex, int index){
+        SoPlex* so = (SoPlex*)(soplex);
+        return so->getPrimalRealIndex(index);
      }
      ```
