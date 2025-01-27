@@ -53,4 +53,7 @@ The following steps need to be followed to use our code:
      $ cmake .. -DSCIP_DIR="/path/to/scip/installation"
      $ make
      ```
-Now, we can execute our algorithm.
+Now, we can execute our algorithm. For example:
+```markdown
+$ ./rcfc ../../instances/pure_integer/irp.mps +useRCFC
+```
