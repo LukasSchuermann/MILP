@@ -1,6 +1,6 @@
 # GO cuts
 
-This project contains the implementation of the GO cuts separator algorithm MILP of my PhD thesis.
+This project contains the implementation of the GO cuts separator for MILPs of my PhD thesis.
 It is implementend in C++ using the MINLP solver SCIP.
 
 ## Requirements
