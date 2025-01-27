@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.3)
 set(CMAKE_CXX_STANDARD 17)
 
-project(vrp)
+project(go)
 
 if (NOT CMAKE_BUILD_TYPE OR CMAKE_BUILD_TYPE STREQUAL "")
     set(CMAKE_BUILD_TYPE "Release" CACHE STRING "" FORCE)
@@ -23,18 +23,12 @@ set(SOURCES
 )
 
 
-add_executable(vrp ${SOURCES})
+add_executable(go ${SOURCES})
 
-target_include_directories(vrp
+target_include_directories(go
         PRIVATE
         ${PROJECT_SOURCE_DIR}/include
 )
-
-# for testing
-#enable_testing()
-#add_test(NAME vrpbuild/small-test.txt
-#        COMMAND vrp ../instances/r101/r1_n20_nv25_p0.25_l10.json)
-#add_test(vrpbuild/small-test.txt ${EXE})
 
 # SCIP
 # Note: SCIP_DIR as a path is only a recommendation for cmake
@@ -51,16 +45,9 @@ message(STATUS "Using SCIP library from here ${SCIP_DIR}.")
 
 ## This project links
 
-target_link_libraries(vrp
+target_link_libraries(go
         ${SCIP_LIBRARIES}
 )
-
-
-# get_cmake_property(_variableNames VARIABLES)
-# list (SORT _variableNames)
-# foreach (_variableName ${_variableNames})
-#     message(STATUS "${_variableName}=${${_variableName}}")
-# endforeach()
 
 
 
