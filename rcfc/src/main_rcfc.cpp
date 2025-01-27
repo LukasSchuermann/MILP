@@ -19,8 +19,6 @@
 #include "fstream"
 #include <iomanip>
 
-using json = nlohmann::json;
-
 static
 SCIP_RETCODE readArguments(
         int                 argc,               /**< number of shell parameters */
