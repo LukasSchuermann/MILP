@@ -14,6 +14,7 @@
  * UPWARDS = What if x = 1
  * DOWNWARDS = What if x = 0
  **/
+
 enum CutDir
 {
     UPWARDS = -1,
