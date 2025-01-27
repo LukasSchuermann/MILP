@@ -1,0 +1,15 @@
+max_nofind 5
+max_ntries 20
+valid_gap 1.0
+sepa_freq 4
+away 0.2
+factor 0.85
+reset 1.5
+iter_init 5
+iter_perc 0.5
+maxrounds 1
+maxroundsroot 5
+maxfix_rel 0.1
+maxfix 5
+maxfixroot 15
+max_depth -1
