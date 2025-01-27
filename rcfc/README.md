@@ -46,3 +46,10 @@ The following steps need to be followed to use our code:
      # by:
      if( lp->flushed && lp->solved && !(lp->probing && lp->lpsolstat == SCIP_LPSOLSTAT_ITERLIMIT) )
      ```
+  5. Now compile SCIP and link the installation to this project by either setting the $ENV{SCIP_DIR} variable to the correct path or include -DSCIP_DIR="/path/to/scip/installation" in the following steps:
+     ```markdown
+     $ mkdir build
+     $ cd build
+     $ cmake .. -DSCIP_DIR="/path/to/scip/installation"
+     $ make
+     ```
