@@ -1,7 +1,7 @@
 # GO cuts
 
-This project contains the implementation of the GO cuts separator algorithm MILP of my PhD thesis.
-It is implementend in C++ using the MINLP solver SCIP.
+This project contains the implementation of the GO cuts separator for MILPs of my PhD thesis.
+It is implemented in C++ using the MINLP solver SCIP.
 
 ## Requirements
 
@@ -19,3 +19,8 @@ Now we can run the code as in the following example:
 ```markdown
 $ ./go ../../instances/pure_integer/irp.mps +useCutting
 ```
+
+### Branches
+
+  - main: On the main branch, you can apply the MIR approach for the GO cuts
+  - pureInt: On the pureInt branch, you can apply the approach for pure-integer programs
