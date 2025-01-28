@@ -19,6 +19,6 @@ $ make
 ```
 Now we can run the code as in the following example:
 ```markdown
-$ ./go ../../instances/pure_integer/irp.mps +useCutting
+$ ./go ../../../instances/pure_integer/irp.mps +useCutting
 ```
 
